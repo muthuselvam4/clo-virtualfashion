@@ -1,1 +1,1 @@
-export const GET_CONTENT_LIST = 'GET_CONTENT_LIST'
+export const GET_CONTENT_LIST = "GET_CONTENT_LIST";

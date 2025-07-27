@@ -1,7 +1,7 @@
-import * as constant from './constant.js';
+import * as constant from "./constant.js";
 
 const initialState = {
-  connectContentList: '',
+  connectContentList: "",
 };
 
 const rootReducer = (state = initialState, action) => {
