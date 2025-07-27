@@ -1,22 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setContentList } from './action.js';
 
 function ConnectContentList() {
+  const dispatch = useDispatch();
+  const contentList = useSelector((state) => state.connectContentList);
 
-    const [contentList, setContentList] = useState('');
+  // Fetch data on mount
+  useEffect(() => {
+    fetch('https://closet-recruiting-api.azurewebsites.net/api/data')
+      .then((response) => response.json())
+      .then((data) => dispatch(setContentList(data)))
+      .catch((error) =>
+        console.log('Something went wrong on our side', error)
+      );
+  }, [dispatch]);
 
-    useEffect(() => {
-        fetch('https://closet-recruiting-api.azurewebsites.net/api/data')
-        .then((response) => response.json())
-        .then((data) => setContentList(data))
-        .catch((error) => console.log('Something went wrong on our side', error))
-    },[]);
+  console.log('listItem', contentList);
 
-    console.log('contentList', contentList)
-
-    return (
-        <div>Hello
-        </div>
-    )
+  return (
+    <div>
+      {contentList.length > 0 ? (
+        contentList.map((item, index) => (
+          <div key={index}>{item?.id}</div>
+        ))
+      ) : (
+        <div>Loading data...</div>
+      )}
+    </div>
+  );
 }
 
 export default ConnectContentList;
