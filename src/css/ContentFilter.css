@@ -1,0 +1,52 @@
+.content-fliter {
+    background-color: #1A1A1F;
+    margin: 20px 0px;
+}
+
+.content-filter-card {
+    display: flex;
+    background-color: black;
+    padding: 5px;
+    justify-content: space-between;
+    gap: 20px;
+    color: white;
+    max-width: 80%;
+    margin: 0% 10% 0% 10%;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+.content-filter-label {
+    color: white;
+    margin: 15px;
+}
+
+.content-filter-checkbox {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.checkbox {
+    width: 15px;
+    height: 15px;
+    border: 3px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.content-filter-reset {
+    text-align: right;
+    align-items: center;
+    margin: 15px;
+}
+
+.content-filter-reset-button {
+    background-color: transparent;
+    color: white;
+    border: 0px transparent;
+    padding: 5px;
+    font-size: 10px;
+}

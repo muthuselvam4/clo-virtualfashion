@@ -4,11 +4,9 @@
 
 .content-grid {
   display: grid;
-  border: 1px solid #5DD28E;
   padding: 10px;
   border-radius: 4px 4px 4px 4px;
   grid-template-columns: repeat(4, 1fr);
-  /* Default: 4 columns */
   gap: 20px;
 }
 

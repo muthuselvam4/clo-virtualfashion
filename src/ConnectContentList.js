@@ -6,8 +6,17 @@ import "./css/ContentList.css";
 function ConnectContentList() {
   const dispatch = useDispatch();
   const contentList = useSelector((state) => state.connectContentList);
+  const contentFilterPaid = useSelector(
+    (state) => state.connectContentFilterPaid
+  );
+  const contentFilterFree = useSelector(
+    (state) => state.connectContentFilterFree
+  );
+  const contentFilterView = useSelector(
+    (state) => state.connectContentFilterView
+  );
+  const contentFilter = useSelector((state) => state.connectContentFilter);
 
-  // Fetch data on mount
   useEffect(() => {
     fetch("https://closet-recruiting-api.azurewebsites.net/api/data")
       .then((response) => response.json())
@@ -15,14 +24,25 @@ function ConnectContentList() {
       .catch((error) => console.log("Something went wrong on our side", error));
   }, [dispatch]);
 
-  console.log("listItem", contentList);
+  const combinedList = [
+    ...(contentList || []).filter(
+      (list) => list.pricingOption === 0 && contentFilterPaid
+    ),
+    ...(contentList || []).filter(
+      (list) => list.pricingOption === 1 && contentFilterFree
+    ),
+    ...(contentList || []).filter(
+      (list) => list.pricingOption === 2 && contentFilterView
+    ),
+  ];
+
+  const finalList = contentFilter ? combinedList : contentList;
 
   return (
     <div className="content-container">
-      <h4 className="content-green">Content List</h4>
       <div className="content-grid">
-        {contentList.length > 0 &&
-          contentList.map((item, index) => (
+        {finalList.length > 0 &&
+          finalList.map((item, index) => (
             <div className="content-card" key={index}>
               <img
                 src={item?.imagePath}
