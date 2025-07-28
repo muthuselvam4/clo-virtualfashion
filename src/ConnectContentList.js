@@ -51,18 +51,18 @@ function ConnectContentList() {
               ></img>
               <div className="content-price-container">
                 <div>
-                  <p>{item?.creator || `Item ${index + 1}`}</p>
-                  <p>{item?.title || "No description available"}</p>
+                  <p className="content-description">{item?.creator || `Item ${index + 1}`}</p>
+                  <p className="content-description">{item?.title || "No description available"}</p>
                 </div>
                 <div>
                   {item?.price && item?.pricingOption === 0 && (
                     <h4 className="content-price">${item?.price}</h4>
                   )}
                   {item?.price && item?.pricingOption === 1 && (
-                    <h4 className="content-price">FREE</h4>
+                    <h5 className="content-price">FREE</h5>
                   )}
                   {item?.price && item?.pricingOption === 2 && (
-                    <h4 className="content-price">VIEW ONLY</h4>
+                    <h5 className="content-price">VIEW ONLY</h5>
                   )}
                 </div>
               </div>

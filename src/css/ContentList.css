@@ -26,6 +26,10 @@
   justify-content: space-between;
 }
 
+.content-description {
+  font-size: 14px;
+}
+
 .content-price {
   padding-right: 30px;
 }
